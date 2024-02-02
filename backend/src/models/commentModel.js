@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import modelOptions from "./optionsModel";
 const Schema = mongoose.Schema
 
-const reviewShema = new Schema({
+const commentShema = new Schema({
     // Атрибут, що вказує на користувача, який залишив огляд
     user: {
         type: Schema.Types.ObjectId,
@@ -38,6 +38,6 @@ const reviewShema = new Schema({
 
 }, modelOptions)
 
-const reviewModel = mongoose.model('Review', reviewShema)
+const commentsModel = mongoose.model('Comment', commentShema)
 
-export default reviewModel
+export default commentsModel

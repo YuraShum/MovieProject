@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 // Створення схеми користувача
 const userShema = new Schema({
     // Унікальне ім'я користувача
-    username: {
+    userName: {
         type: String,
         required: true,
         unique: true

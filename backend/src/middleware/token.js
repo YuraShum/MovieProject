@@ -27,12 +27,12 @@ const userAuthChecks = async( request, response, next) => {
     const tokenDecryptioned = tokenDecryption(request)
 
     if(!tokenDecryptioned){
-        return responseHandlers.unouthorize(response)
+        return responseHandlers.unauthorize(response)
     }
 
     const user = await userModel.findById(tokenDecryptioned.data)
     if(!user){
-        return responseHandlers.unouthorize(response)
+        return responseHandlers.unauthorize(response)
     }
 
     request.user = user

@@ -17,7 +17,7 @@ const responseHandlers = {
     created: (response, data) => {
         return responseWidthData(response, 200, data)
     },
-    unouthorize: (response) => {
+    unauthorize: (response) => {
         return responseWidthData(
             response,
             401,
