@@ -1,6 +1,7 @@
 import userModel from "../models/userModel";
 import responseHandlers from "../handlers/responseHandlers";
 import jsonwebtoken from 'jsonwebtoken'
+import requestHandler from '../handlers/requestHandler'
 
 const generateToken = (userId) => {
     return jsonwebtoken.sign(
@@ -11,7 +12,7 @@ const generateToken = (userId) => {
 }
 
 const userAuthService = {
-    userSingUp: async (request, response) => {
+    userSignUp: async (request, response) => {
         try {
             const { userName, password, displayName } = request.body
             console.log(request)
@@ -48,7 +49,7 @@ const userAuthService = {
         }
 
     },
-    userSingIn: async (request, response) => {
+    userSignIn: async (request, response) => {
         try {
             const { userName, password } = request.body
 
