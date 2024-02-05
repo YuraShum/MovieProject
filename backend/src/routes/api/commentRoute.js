@@ -5,6 +5,11 @@ import commentController from '../../controllers/commentController'
 import tokenMiddleware from '../../middleware/token'
 import requestHandler from '../../handlers/requestHandler'
 
+const createFieldConfig = (fieldName) => {
+    return body(`${fieldName}`)
+        .exists()
+        .withMessage(`${fieldName} is required`)
+}
 const router = expres.Router({ mergeParams: true })
 
 
@@ -21,31 +26,19 @@ router.delete(
 router.post(
     '/',
     tokenMiddleware.userAuthChecks,
-    body("id")
-        .exists()
-        .withMessage("Id is required")
+    createFieldConfig('id')
         .isLength({ min: 1 })
         .withMessage("Id con not be empty"),
-    body("content")
-        .exists()
-        .withMessage("content is required")
-        .isLength({ min: 3 })
+    createFieldConfig('content')
+        .isLength({ min: 5 })
         .withMessage("content con not be empty"),
-    body("type")
-        .exists()
-        .withMessage("Type is required")
+    createFieldConfig("type")
         .custom(type => ["movie", "tv"].includes(type))
         .withMessage("Type invalid"),
-    body("title")
-        .exists()
-        .withMessage('Title is required'),
-    body("poster")
-        .exists()
-        .withMessage('Poster is required'),
+    createFieldConfig("title"),
+    createFieldConfig("poster"),
     requestHandler.validate,
     commentController.createComment
-
 )
-
 
 export default router
