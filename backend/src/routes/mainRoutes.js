@@ -8,7 +8,7 @@ const router = express.Router()
 
 router.use('/person', personRoute)
 router.use('/:content', contentRoute)
-router.use('/comment', commentRoute)
+router.use('/comments', commentRoute)
 router.use('/user', userRoute)
 
 

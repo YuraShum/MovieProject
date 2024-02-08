@@ -2,7 +2,7 @@ import responseHandlers from "../handlers/responseHandlers"
 import movieDBApi from "../theMovieDatabase/api"
 import { tokenDecryption } from '../middleware/token.js'
 import userModel from "../models/userModel"
-import reviewModel from '../models/commentModel.js'
+import commentsModel from "../models/commentModel.js"
 const contentController = {
     // функція отримує список медіапроектів (фільми або телешоу)
     // на основі типу та категорії, а також номеру сторінки
@@ -61,10 +61,10 @@ const contentController = {
                     media.isFavorite = isFavorite !== null
                 }
             }
-            const reviews = await reviewModel.find({ media })
+            const comments = await commentsModel.find({ media })
                 .populate('user')
                 .sort("-createdAt")
-            content.reviews = reviews
+            content.comments = comments
 
             responseHandlers.ok(response, content)
 
