@@ -3,7 +3,7 @@ const endpoints = {
         userSignIn: 'user/signin',
         userSignUp:'user/signup',
         getUserInformation: 'user/information',
-        paswordUpdate: 'user/update-password'
+        passwordUpdate: 'user/update-password'
 
     },
     person: {
@@ -22,6 +22,11 @@ const endpoints = {
     },
     genre:{
         list: ({type}) => `${type}/genres`
+    },
+    comment: {
+        getListComment: "comments",
+        addComment: "comments",
+        removeComment: ({ id }) => `comments/${id}`
     }
 
 }
