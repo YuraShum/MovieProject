@@ -1,5 +1,5 @@
-import responseHandlers from "../handlers/responseHandlers"
-import commentsModel from "../models/commentModel"
+import responseHandlers from "../handlers/responseHandlers.js"
+import commentsModel from "../models/commentModel.js"
 
 
 const commentController = {

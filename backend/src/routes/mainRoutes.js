@@ -1,8 +1,8 @@
 import express from 'express'
-import personRoute from './api/personRoute'
-import contentRoute from './api/contentRoute'
-import commentRoute from "./api/commentRoute"
-import userRoute from './api/userRoute/userRoute'
+import personRoute from './api/personRoute.js'
+import contentRoute from './api/contentRoute.js'
+import commentRoute from "./api/commentRoute.js"
+import userRoute from './api/userRoute/userRoute.js'
 
 const router = express.Router()
 

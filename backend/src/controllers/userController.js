@@ -1,7 +1,7 @@
-import userModel from "../models/userModel";
-import responseHandlers from "../handlers/responseHandlers";
+import userModel from "../models/userModel.js";
+import responseHandlers from "../handlers/responseHandlers.js";
 import jsonwebtoken from 'jsonwebtoken'
-import requestHandler from '../handlers/requestHandler'
+
 
 const generateToken = (userId) => {
     return jsonwebtoken.sign(

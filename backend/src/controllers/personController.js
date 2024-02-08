@@ -1,5 +1,5 @@
-import responseHandlers from "../handlers/responseHandlers"
-import movieDBApi from "../theMovieDatabase/api"
+import responseHandlers from "../handlers/responseHandlers.js"
+import movieDBApi from "../theMovieDatabase/api.js"
 
 
 const personController = {

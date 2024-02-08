@@ -1,9 +1,9 @@
 import expres from 'express'
 import { body } from 'express-validator'
-import commentController from '../../controllers/commentController'
+import commentController from '../../controllers/commentController.js'
 
-import tokenMiddleware from '../../middleware/token'
-import requestHandler from '../../handlers/requestHandler'
+import tokenMiddleware from '../../middleware/token.js'
+import requestHandler from '../../handlers/requestHandler.js'
 
 const createFieldConfig = (fieldName) => {
     return body(`${fieldName}`)

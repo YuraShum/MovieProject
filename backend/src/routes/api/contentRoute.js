@@ -1,5 +1,5 @@
 import express from 'express'
-import contentController from '../../controllers/contentController'
+import contentController from '../../controllers/contentController.js'
 
 const router = express.Router({ mergeParams: true })
 

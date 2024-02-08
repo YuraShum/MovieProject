@@ -1,11 +1,10 @@
 import express from "express"
-import { body } from "express-validator"
-import userPostRouteConfig from "./userPostConfig"
-import tokenMiddleware from '../../../middleware/token'
-import requestHandler from '../../../handlers/requestHandler'
-import userController from '../../../controllers/userController'
-import favoriteController from '../../../controllers/favoriteController'
-import userPutRouteConfig from "./userPutConfig"
+import userPostRouteConfig from "./userPostConfig.js"
+import tokenMiddleware from '../../../middleware/token.js'
+import requestHandler from '../../../handlers/requestHandler.js'
+import userController from '../../../controllers/userController.js'
+import favoriteController from '../../../controllers/favoriteController.js'
+import userPutRouteConfig from "./userPutConfig.js"
 
 const router = express.Router()
 // signup, signin, favorites

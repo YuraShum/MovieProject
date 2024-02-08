@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import modelOptions from "./optionsModel";
+import modelOptions from "./optionsModel.js";
 const Schema = mongoose.Schema
 
 const commentShema = new Schema({

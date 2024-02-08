@@ -1,5 +1,5 @@
 import express from 'express'
-import personController from '../../controllers/personController'
+import personController from '../../controllers/personController.js'
 
 const router = express.Router({ mergeParams: true })
 

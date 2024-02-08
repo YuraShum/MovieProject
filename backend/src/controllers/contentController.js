@@ -1,7 +1,7 @@
-import responseHandlers from "../handlers/responseHandlers"
-import movieDBApi from "../theMovieDatabase/api"
-import { tokenDecryption } from '../middleware/token.js'
-import userModel from "../models/userModel"
+import responseHandlers from "../handlers/responseHandlers.js"
+import movieDBApi from "../theMovieDatabase/api.js"
+import token from '../middleware/token.js'
+import userModel from "../models/userModel.js"
 import commentsModel from "../models/commentModel.js"
 const contentController = {
     // функція отримує список медіапроектів (фільми або телешоу)
@@ -50,7 +50,7 @@ const contentController = {
             content.images = images
 
 
-            const tokenDecryptioned = tokenDecryption(request)
+            const tokenDecryptioned = token.tokenDecryption(request)
             if (tokenDecryptioned) {
                 // отримання користувача якщо є токен 
                 const user = await userModel.findById(tokenDecryptioned.data)

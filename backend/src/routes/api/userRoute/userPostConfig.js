@@ -1,8 +1,8 @@
 import { body } from 'express-validator'
-import requestHandler from '../../../handlers/requestHandler'
-import tokenMiddleware from '../../../middleware/token'
-import userController from '../../../controllers/userController'
-import favoriteController from '../../../controllers/favoriteController'
+import requestHandler from '../../../handlers/requestHandler.js'
+import tokenMiddleware from '../../../middleware/token.js'
+import userController from '../../../controllers/userController.js'
+import favoriteController from '../../../controllers/favoriteController.js'
 const createFieldConfig = (fieldName) => {
     const favoritesPost = ['type', 'id', 'title', 'poster', 'rate'].includes(fieldName)
     return favoritesPost ?

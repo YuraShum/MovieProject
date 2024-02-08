@@ -1,5 +1,5 @@
-import responseHandlers from "../handlers/responseHandlers"
-import favoriteModel from "../models/favoriteModel"
+import responseHandlers from "../handlers/responseHandlers.js"
+import favoriteModel from "../models/favoriteModel.js"
 
 
 const favoriteController = {
