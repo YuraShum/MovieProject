@@ -4,6 +4,7 @@ import 'dotenv/config'
 import cors from "cors"
 import cookieParser from "cookie-parser"
 import http from 'http'
+import routes from './src/routes/mainRoutes.js'
 
 // express app
 const app = express()
@@ -15,7 +16,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
-
+app.use('/api/movie', routes)
 
 const server = http.createServer(app)
 
