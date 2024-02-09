@@ -1,10 +1,12 @@
 import { Box } from '@mui/material'
 import { Outlet } from 'react-router-dom'
+import Loading from '../common/Loading/Loading'
 
 const Layout = () => {
     return (
         <>
             {/** loading section*/}
+            <Loading/>
             {/** loading section*/}
 
             {/** login  section*/}
