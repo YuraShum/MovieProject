@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    themeMode: 'dark'
+    screenThemeMode: 'dark'
 }
 
 export const screenThemeModeSlice = createSlice({
@@ -9,7 +9,7 @@ export const screenThemeModeSlice = createSlice({
     initialState,
     reducers: {
         setScreenThemeMode: (state, action) => {
-            state.themeMode = action.payload
+            state.screenThemeMode = action.payload
         }
     }
     
