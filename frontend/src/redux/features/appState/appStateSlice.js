@@ -8,8 +8,10 @@ export const appStateSlice = createSlice({
     name: 'appState',
     initialState,
     reducers: {
-        setAppState: (state, action) => 
-        state.appState = action.payload
+        setAppState: (state, action) => {
+            state.appState = action.payload
+        }
+        
     }
 })
 
