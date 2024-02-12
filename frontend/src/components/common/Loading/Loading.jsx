@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Paper from '@mui/material/Paper';
 import { Box } from '@mui/material'
-import CustomCircularProgress from './CustomCircularProgress';
+import CustomCircularProgress from '../CustomCircularProgress';
 
 const Loading = () => {
     const isLoading = useSelector((state) => state.isLoading)

@@ -1,6 +1,8 @@
 import { Box } from '@mui/material'
 import { Outlet } from 'react-router-dom'
 import Loading from '../common/Loading/Loading'
+import Footer from '../common/Footer/Footer'
+import Header from '../common/Header/Header'
 
 const Layout = () => {
     return (
@@ -15,8 +17,12 @@ const Layout = () => {
             {/** content section */}
             <Box
                 display='flex'
-                minHeight="100vh">
+                minHeight="100vh"
+                flexDirection='column'
+                >
+                
                 {/** header section */}
+                <Header/>
                 {/** header section */}
 
                 {/** main section */}
@@ -32,6 +38,7 @@ const Layout = () => {
                 {/** main section */}
 
                 {/** footer section */}
+                <Footer/>
                 {/** footer section */}
             </Box>
             {/** content section */}
