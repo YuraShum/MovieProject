@@ -8,7 +8,6 @@ const Conteiner = ({children}) => {
         width: '100%',
         marginX: 'auto',
         color: 'text.primary',
-        marginTop: '5rem',
         backgroundColor: 'primary.main'
     }}>
         {children}

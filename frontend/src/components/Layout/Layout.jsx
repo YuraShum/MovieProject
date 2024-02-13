@@ -16,7 +16,7 @@ const Layout = () => {
 
             {/** content section */}
             <Box
-                display='flex'
+                
                 minHeight="100vh"
                 flexDirection='column'
                 >
@@ -30,7 +30,10 @@ const Layout = () => {
                     component='main'
                     overflow='hidden'
                     flexGrow={1}
-                    minHeight='100vh'
+                    minHeight="100vh"
+                    sx={{
+                        backgroundColor: 'background.default'
+                    }}
                 >
                     <Outlet/>
 

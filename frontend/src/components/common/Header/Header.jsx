@@ -33,6 +33,7 @@ const dataMenu = [
 ]
 
 const Header = () => {
+    const themeUi = useTheme()
     // const themeUi = useTheme()
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const dispatch = useDispatch()
@@ -48,9 +49,9 @@ const Header = () => {
         dispatch(setScreenThemeMode(theme))
 
     }
-    // useEffect(() => {
-    //     console.log(themeUi.palette);
-    // }, [screenThemeMode]);
+    useEffect(() => {
+        console.log(themeUi.palette);
+    }, [screenThemeMode]);
 
 
 
@@ -79,7 +80,11 @@ const Header = () => {
                             <GiHamburgerMenu />
                         </IconButton>
                         <Box>
-                            <Typography variant='h4'><span style={{ fontWeight: 700 }}>Mo</span>vie</Typography>
+                            <Typography variant='h4'>
+                                <span
+                                    style={{ fontWeight: 700, color: `${themeUi.palette.mode === themeState.light ? "#131313" : '#2196f3'}` }}
+                                >Mo</span>vie
+                            </Typography>
                         </Box>
 
 
@@ -94,12 +99,19 @@ const Header = () => {
                                     key={item.text}
                                     sx={{
                                         color: appState.includes(item.state) ?
-                                            'primary.contrastText' :
+                                            'secondary.main' :
                                             'inherit',
-                                        mr: 3
+                                        mr: 3,
+                                        backgroundColor: appState.includes(item.state) ?
+
+                                            'primary.contrastText' : 'inherit',
+                                        "&:hover": {
+                                            color: '#ffffff'
+                                        }
                                     }}
                                     component={Link}
                                     to={item.path}
+
                                     variant={appState.includes(item.state) ? 'contained' : 'text'}
                                 >
                                     {item.text}

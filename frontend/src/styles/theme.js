@@ -1,5 +1,5 @@
-import {createTheme} from '@mui/material/styles'
-import {colors} from '@mui/material'
+import { createTheme } from '@mui/material/styles'
+import { colors } from '@mui/material'
 
 
 export const themeState = {
@@ -8,13 +8,13 @@ export const themeState = {
 }
 
 const themeStyles = {
-    custom: ({mode}) => {
+    custom: ({ mode }) => {
         const customStyle = mode === themeState.light ? {
             primary: {
                 main: "#2196f3",
             },
             secondary: {
-                main: "#1565c0"
+                main: "#225792"
             },
             background: {
                 default: colors.grey["100"],
@@ -25,7 +25,7 @@ const themeStyles = {
                 contrastText: '#ffffff'
             },
             secondary: {
-                main: "#1565c0",
+                main: "#225792",
                 contrastText: '#ffffff'
             },
             background: {
@@ -37,10 +37,10 @@ const themeStyles = {
         return createTheme({
             palette: {
                 mode,
-            ...customStyle
+                ...customStyle
             }
         })
-        
+
     }
 }
 
