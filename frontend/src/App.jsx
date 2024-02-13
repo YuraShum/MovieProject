@@ -14,10 +14,14 @@ import PasswordUpdate from "./pages/PasswordUpdate/PasswordUpdate";
 import PersonDetail from "./pages/Person/PersonDetail";
 import ContentList from "./pages/Content/ContentList/ContentList";
 import ContentDetail from "./pages/Content/ContentDetail/ContentDetail";
+import { useEffect } from "react";
 
 
 function App() {
   const { screenThemeMode } = useSelector((state) => state.screenThemeMode)
+  useEffect(() => {
+    console.log(themeStyles.custom({ screenThemeMode }))
+  }, [screenThemeMode])
   return (
     <ThemeProvider theme={themeStyles.custom({ mode: screenThemeMode })}>
       {/** toast section */}

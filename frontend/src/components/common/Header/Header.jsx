@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Conteiner from '../Conteiner/Conteiner'
 import { AppBar, Box, IconButton, Stack, Toolbar, Typography, Button } from '@mui/material'
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { themeState } from '../../../styles/theme';
 import { setScreenThemeMode } from '../../../redux/features/screenThemeMode/screenThemeModeSlice';
 import { useTheme } from '@emotion/react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 const dataMenu = [
     {
         text: 'home',
@@ -33,7 +33,7 @@ const dataMenu = [
 ]
 
 const Header = () => {
-    const themeUi = useTheme()
+    // const themeUi = useTheme()
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const dispatch = useDispatch()
     const { user } = useSelector((state) => state.user)
@@ -46,15 +46,21 @@ const Header = () => {
             themeState.dark
 
         dispatch(setScreenThemeMode(theme))
+
     }
+    // useEffect(() => {
+    //     console.log(themeUi.palette);
+    // }, [screenThemeMode]);
 
 
 
     return (
-        <>
+        <header id='header'>
             <AppBar
                 elevation={3}
-                sx={{ zIndex: 1111 }}>
+                sx={{
+                    zIndex: 1111,
+                }}>
                 <Toolbar
                     sx={{
                         alignItems: 'center',
@@ -84,17 +90,17 @@ const Header = () => {
                         display={{ xs: 'none', md: 'flex' }}>
                         <Box>
                             {dataMenu.map((item) => (
-                                <Button 
-                                key={item.text}
-                                sx={{
-                                    color: appState.includes(item.state) ? 
-                                    'primary.contrastText' : 
-                                    'inherit',
-                                    mr: 3
-                                }}
-                                component={Link}
-                                to={item.path}
-                                variant={appState.includes(item.state) ? 'contained': 'text'}
+                                <Button
+                                    key={item.text}
+                                    sx={{
+                                        color: appState.includes(item.state) ?
+                                            'primary.contrastText' :
+                                            'inherit',
+                                        mr: 3
+                                    }}
+                                    component={Link}
+                                    to={item.path}
+                                    variant={appState.includes(item.state) ? 'contained' : 'text'}
                                 >
                                     {item.text}
 
@@ -103,18 +109,18 @@ const Header = () => {
                         </Box>
 
                     </Box>
-                    <IconButton 
-                    sx={{
-                        color: 'white',
-                    }}
-                    onClick={hendleSwithTheme}>
-                        {screenThemeMode === themeState.dark ? 
-                        <MdLightMode/> : <MdDarkMode/>}
+                    <IconButton
+                        sx={{
+                            color: 'white',
+                        }}
+                        onClick={hendleSwithTheme}>
+                        {screenThemeMode === themeState.dark ?
+                            <MdLightMode /> : <MdDarkMode />}
                     </IconButton>
                 </Toolbar>
 
             </AppBar>
-        </>
+        </header>
 
     )
 }

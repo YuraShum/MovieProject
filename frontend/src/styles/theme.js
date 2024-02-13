@@ -35,8 +35,10 @@ const themeStyles = {
         }
 
         return createTheme({
-            mode,
+            palette: {
+                mode,
             ...customStyle
+            }
         })
         
     }
