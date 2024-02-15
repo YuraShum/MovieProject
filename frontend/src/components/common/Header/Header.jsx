@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Conteiner from '../Conteiner/Conteiner'
+import {setAuthModalOpen} from '../../../redux/features/authUserModal/authUserModalSlice'
 import { AppBar, Box, IconButton, Stack, Toolbar, Typography, Button } from '@mui/material'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
@@ -8,6 +9,10 @@ import { themeState } from '../../../styles/theme';
 import { setScreenThemeMode } from '../../../redux/features/screenThemeMode/screenThemeModeSlice';
 import { useTheme } from '@emotion/react';
 import { Link } from 'react-router-dom'
+import UserSection from '../UserSection/UserSection';
+
+
+
 const dataMenu = [
     {
         text: 'home',
@@ -68,6 +73,7 @@ const Header = () => {
                         justifyContent: 'space-between'
                     }}
                 >
+                    {/** menu burder */}
                     <Stack
                         direction='row'
                         spacing={2}
@@ -89,6 +95,8 @@ const Header = () => {
 
 
                     </Stack>
+                    {/** menu burder */}
+                    {/** main menu */}
                     <Box flexGrow={1}
                         alignItems='center'
                         justifyContent='center'
@@ -99,15 +107,23 @@ const Header = () => {
                                     key={item.text}
                                     sx={{
                                         color: appState.includes(item.state) ?
-                                            'secondary.main' :
-                                            'inherit',
+                                            screenThemeMode === themeState.light ?
+                                                'secondary.main' : 'white' : "white",
                                         mr: 3,
                                         backgroundColor: appState.includes(item.state) ?
+                                            screenThemeMode === themeState.light ?
+                                                'white' : 'secondary.main' : ""
+                                        ,
 
-                                            'primary.contrastText' : 'inherit',
-                                        "&:hover": {
-                                            color: '#ffffff'
-                                        }
+                                        "&:hover": screenThemeMode === themeState.light ?
+                                            {
+                                                color: 'primary.main',
+                                                backgroundColor: 'white'
+                                            } :
+                                            {
+                                                color: 'white',
+                                                backgroundColor: 'secondary.main'
+                                            }
                                     }}
                                     component={Link}
                                     to={item.path}
@@ -121,14 +137,45 @@ const Header = () => {
                         </Box>
 
                     </Box>
-                    <IconButton
-                        sx={{
-                            color: 'white',
-                        }}
-                        onClick={hendleSwithTheme}>
-                        {screenThemeMode === themeState.dark ?
-                            <MdLightMode /> : <MdDarkMode />}
-                    </IconButton>
+                    {/** main menu */}
+                    <Box>
+                        <IconButton
+                            sx={{
+                                color: 'white',
+                                mr: 3
+                            }}
+                            onClick={hendleSwithTheme}>
+                            {screenThemeMode === themeState.dark ?
+                                <MdLightMode /> : <MdDarkMode />}
+                        </IconButton>
+                        {/** user navigation section */}
+                        <Button
+
+                            sx={{
+                                color: 'white',
+                                borderColor: 'white',
+                                "&:hover": screenThemeMode === themeState.light ?
+                                    {
+                                        color: 'primary.main',
+                                        backgroundColor: 'white'
+                                    }
+                                    :
+                                    {
+                                        borderColor: 'secondary.main',
+                                        color: 'white',
+                                        backgroundColor: 'secondary.main'
+                                    }
+                            }}
+                            variant='outlined'>
+                            <Typography  
+                            onClick={() => dispatch(setAuthModalOpen(true))}>
+                                sign in
+                            </Typography>
+                        </Button>
+                        {user && <UserSection/>}
+                        {/** user navigation section */}
+                    </Box>
+
                 </Toolbar>
 
             </AppBar>
