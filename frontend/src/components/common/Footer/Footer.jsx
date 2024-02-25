@@ -14,7 +14,7 @@ const Footer = () => {
                 square={true}
                 elevation={5}
                 sx={{
-                    padding: '1.5rem'
+                    padding: '1rem'
                 }}>
                 <Stack
                     alignItems='center'

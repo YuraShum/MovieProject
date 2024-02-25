@@ -2,6 +2,7 @@ import axios from 'axios'
 import { BASE_URL } from '../../const/constConfig'
 import queryString from 'query-string'
 
+
 const publicUserInstance = axios.create({
     baseURL: BASE_URL,
     paramsSerializer: {
@@ -10,22 +11,23 @@ const publicUserInstance = axios.create({
 })
 
 publicUserInstance.interceptors.request.use(async function (config) {
+    console.log(config)
     return {
         ...config,
         headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json"
         }
     }
-},async function (err){
+}, async function (err) {
     throw err
 })
 
-publicUserInstance.interceptors.response.use(function (response){
-    if(response && response.data){
+publicUserInstance.interceptors.response.use(function (response) {
+    if (response && response.data) {
         return response.data
     }
     return response
-}, function (err){
+}, function (err) {
     throw err.response.data
 })
 

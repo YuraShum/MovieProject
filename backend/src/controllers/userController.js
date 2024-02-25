@@ -13,10 +13,13 @@ const generateToken = (userId) => {
 
 const userAuthService = {
     userSignUp: async (request, response) => {
+        // console.log('123123123123123123')
         try {
             const { userName, password, displayName } = request.body
-            console.log(request)
+            // console.log(request)
+            // console.log(userModel)
             const checkUser = await userModel.findOne({ userName })
+            // console.log(`checkUser: ${checkUser}`)
             // перевіряє, чи існує користувач із вказаним ім'ям користувача, 
             // і якщо так, повертає відповідь з помилкою
             if (checkUser) {
@@ -24,14 +27,16 @@ const userAuthService = {
             }
             // якщо користувача немає створюється новий
             const user = new userModel()
+            console.log(user)
 
             // приствоєнна значень новому користувачу
             user.userName = userName
             user.displayName = displayName
 
-
+            console.log('user:', user)
             user.setPassword(password)
             // зберігаємо юзера в базі даних
+
             await user.save()
 
             // створюється JWT-токен для автентифікації

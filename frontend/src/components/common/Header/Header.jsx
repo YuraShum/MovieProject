@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Conteiner from '../Conteiner/Conteiner'
-import {setAuthModalOpen} from '../../../redux/features/authUserModal/authUserModalSlice'
+import { setAuthUserModal } from '../../../redux/features/authUserModal/authUserModalSlice'
 import { AppBar, Box, IconButton, Stack, Toolbar, Typography, Button } from '@mui/material'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
@@ -10,10 +10,11 @@ import { setScreenThemeMode } from '../../../redux/features/screenThemeMode/scre
 import { useTheme } from '@emotion/react';
 import { Link } from 'react-router-dom'
 import UserSection from '../UserSection/UserSection';
+import SideBar from '../SideBar/SideBar';
 
 
 
-const dataMenu = [
+export const dataMenu = [
     {
         text: 'home',
         path: '/',
@@ -46,6 +47,11 @@ const Header = () => {
     const { appState } = useSelector((state) => state.appState)
     const { screenThemeMode } = useSelector((state) => state.screenThemeMode)
 
+    const { authUserModal } = useSelector((state) => state.authUserModal)
+    useEffect(() => {
+        console.log(authUserModal)
+    }, [authUserModal])
+
     const hendleSwithTheme = () => {
         const theme = screenThemeMode === themeState.dark ?
             themeState.light :
@@ -58,10 +64,15 @@ const Header = () => {
         console.log(themeUi.palette);
     }, [screenThemeMode]);
 
+    const handleToggleSidebar = () => {
+        setSidebarOpen(prevValue => !prevValue)
+    }
+
 
 
     return (
         <header id='header'>
+            <SideBar open={sidebarOpen} toggleSidebar={handleToggleSidebar} />
             <AppBar
                 elevation={3}
                 sx={{
@@ -82,7 +93,8 @@ const Header = () => {
                             sx={{
                                 mr: 2,
                                 display: { md: 'none' }
-                            }}>
+                            }}
+                            onClick={handleToggleSidebar}>
                             <GiHamburgerMenu />
                         </IconButton>
                         <Box>
@@ -149,8 +161,8 @@ const Header = () => {
                                 <MdLightMode /> : <MdDarkMode />}
                         </IconButton>
                         {/** user navigation section */}
-                        <Button
-
+                        {!user && <Button
+                            onClick={() => dispatch(setAuthUserModal(true))}
                             sx={{
                                 color: 'white',
                                 borderColor: 'white',
@@ -167,12 +179,12 @@ const Header = () => {
                                     }
                             }}
                             variant='outlined'>
-                            <Typography  
-                            onClick={() => dispatch(setAuthModalOpen(true))}>
+                            <Typography
+                            >
                                 sign in
                             </Typography>
-                        </Button>
-                        {user && <UserSection/>}
+                        </Button>}
+                        {user && <UserSection />}
                         {/** user navigation section */}
                     </Box>
 

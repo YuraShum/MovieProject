@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import modelOptions from "./optionsModel.js";
+import crypto from 'crypto'
 
 const Schema = mongoose.Schema
 // Створення схеми користувача
@@ -34,7 +35,9 @@ const userShema = new Schema({
 
 userShema.methods.setPassword = function (password) {
     // Генерування випадкового рядка
+    console.log(password)
     this.salt = crypto.randomBytes(16).toString("hex")
+    console.log("Salt", this.salt)
     // Хешування паролю https://www.geeksforgeeks.org/node-js-crypto-pbkdf2sync-method/
     this.password = crypto.pbkdf2Sync(
         password,

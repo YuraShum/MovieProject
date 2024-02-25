@@ -8,12 +8,14 @@ const contentController = {
     // на основі типу та категорії, а також номеру сторінки
     getContentList: async (request, response) => {
         try {
+            console.log('RR', request.query, request.params)
             // отримання сторінки із запиту
             const { page } = request.query
             // отримання значень із параметрів запиту 
-            const { type, category } = request.params
+            const { content , category } = request.params
             // отримання списку медіа проектів за допомоги описаної movieDBApi
-            const result = await movieDBApi.list({ type, category, page })
+            const result = await movieDBApi.list({ type: content, category, page })
+            console.log('Result', result)
             if (result) {
                 return responseHandlers.ok(response, result)
             }
@@ -23,8 +25,8 @@ const contentController = {
     },
     getContentGenres: async (request, response) => {
         try {
-            const { type } = request.params
-            const result = await movieDBApi.genres({ type })
+            const { content } = request.params
+            const result = await movieDBApi.genres({ type: content })
             if (result) {
                 responseHandlers.ok(response, result)
             }
@@ -36,6 +38,7 @@ const contentController = {
         try {
             const { type, id } = request.params
             const content = await movieDBApi.detail({ type, id })
+            
             // виконуємо наповнення даних content
             const informationAboutActor = await movieDBApi.informationAboutActors({ type, id })
             content.credits = informationAboutActor

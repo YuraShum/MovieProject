@@ -9,19 +9,22 @@ const userApi = {
             const response = await publicUserInstance.post(
                 endpoints.user.userSignIn,
                 { userName, password })
+                console.log(response)
 
             return { response }
         } catch (err) {
-            console.log("err")
+            console.log('err')
             return { err }
         }
     },
-    userSignUp: async ({ userName, password, confirmPaassword, displayName }) => {
+    userSignUp: async ({ userName, password, confirmPassword, displayName }) => {
+        // console.log({ userName, password, confirmPassword, displayName })
         try {
             const response = await publicUserInstance.post(
                 endpoints.user.userSignUp,
-                { userName, password, confirmPaassword, displayName }
+                { userName, password, confirmPassword, displayName }
             )
+
             return { response }
         } catch (err) {
             return { err }

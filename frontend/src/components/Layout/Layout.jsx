@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import Loading from '../common/Loading/Loading'
 import Footer from '../common/Footer/Footer'
 import Header from '../common/Header/Header'
+import ModalWindow from '../common/ModalWindow/ModalWindow'
 
 const Layout = () => {
     return (
@@ -12,6 +13,7 @@ const Layout = () => {
             {/** loading section*/}
 
             {/** login  section*/}
+            <ModalWindow/>
             {/** login  section*/}
 
             {/** content section */}

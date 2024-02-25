@@ -4,9 +4,12 @@ import endpoints from "../endpoints/endpointsConfig";
 
 const contentApi = {
     getContentList: async ({ type, category, page }) => {
+        console.log({ type, category, page })
         try {
             const response = await publicUserInstance.get(
                 endpoints.content.getContentList({ type, category, page })
+            )
+            console.log("response", response
             )
             return { response }
         } catch (err) {

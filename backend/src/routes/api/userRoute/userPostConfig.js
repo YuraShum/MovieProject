@@ -3,6 +3,7 @@ import requestHandler from '../../../handlers/requestHandler.js'
 import tokenMiddleware from '../../../middleware/token.js'
 import userController from '../../../controllers/userController.js'
 import favoriteController from '../../../controllers/favoriteController.js'
+import userModel from '../../../models/userModel.js'
 const createFieldConfig = (fieldName) => {
     const favoritesPost = ['type', 'id', 'title', 'poster', 'rate'].includes(fieldName)
     return favoritesPost ?
@@ -20,7 +21,7 @@ const userPostRouteConfig = {
     signup: [
         createFieldConfig('userName')
             .custom(async value => {
-                const user = await userModel.findOne({ username: value })
+                const user = await userModel.findOne({ userName: value })
                 if (user) {
                     return Promise.reject("userName already used")
                 }
