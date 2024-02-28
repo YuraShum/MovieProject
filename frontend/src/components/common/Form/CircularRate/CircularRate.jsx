@@ -1,6 +1,9 @@
+import { useTheme } from '@emotion/react'
 import { Box, CircularProgress, Typography } from '@mui/material'
+import { themeState } from '../../../../styles/theme'
 
 const CircularRate = ({ value }) => {
+    const theme = useTheme()
     return (
         <Box
             sx={{
@@ -16,8 +19,8 @@ const CircularRate = ({ value }) => {
                 sx={{
                     fontWeight: 700,
                     borderRadius: '50%',
-                    backgroundColor: 'secondary.main',
-                    color: 'primary.main'
+                    backgroundColor:  `${theme.palette.mode === themeState.light ? 'primary.main': 'secondary.main'}`,
+                    color: `${theme.palette.mode === themeState.light ? 'white': 'primary.main'}`
                 }}
                 size={50}
             />
@@ -32,7 +35,7 @@ const CircularRate = ({ value }) => {
                     alignItems: 'center',
                     justifyContent: 'center'
                 }}>
-                <Typography fontWeight='700'>{Math.floor(value * 10) / 10}</Typography>
+                <Typography fontWeight='700' sx={{color: 'white'}}>{Math.floor(value * 10) / 10}</Typography>
             </Box>
         </Box>
     )

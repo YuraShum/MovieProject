@@ -150,7 +150,9 @@ const Header = () => {
 
                     </Box>
                     {/** main menu */}
-                    <Box>
+                    <Box sx={{
+                        display: 'flex'
+                    }}>
                         <IconButton
                             sx={{
                                 color: 'white',

@@ -4,37 +4,42 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { useState } from "react";
 import UserMenu from "./UserMenu/UserMenu";
 
+
 const UserSection = () => {
   const { user } = useSelector((state) => state.user)
 
   const [anchorEl, setAnchorEl] = useState(null)
 
   const hendleToggleMenu = (event) => {
-    setAnchorEl(event.currentValue)
+    setAnchorEl(event.currentTarget);
   }
   return (
     <>
       {user &&
         <>
-          <Stack 
-          sx={{
-            display: "flex",
-            flexDirection:'row',
-            alignItems: 'center',
-            gap: '1rem'
-            
-          }}>
+          <Stack
+            sx={{
+              display: "flex",
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '1rem'
+
+            }}>
+
             <Typography
               variant="h6">
               {user.displayName}
             </Typography>
-            <IconButton>
+            <IconButton
+              cursor='pointer'
+              onClick={hendleToggleMenu} >
               <FaRegUserCircle
-                cursor='pointer'
-                onClick={hendleToggleMenu} />
+              style={{color: 'white'}}
+              />
             </IconButton>
-            <UserMenu anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
+            
           </Stack>
+          <UserMenu anchorEl={anchorEl} setAnchorEl={setAnchorEl}  />
         </>}
     </>
   )

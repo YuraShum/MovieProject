@@ -15,8 +15,10 @@ import PersonDetail from "./pages/Person/PersonDetail";
 import ContentList from "./pages/Content/ContentList/ContentList";
 import ContentDetail from "./pages/Content/ContentDetail/ContentDetail";
 import { useEffect } from "react";
-
-
+import 'react-toastify/dist/ReactToastify.css';
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 function App() {
   const { screenThemeMode } = useSelector((state) => state.screenThemeMode)
   useEffect(() => {

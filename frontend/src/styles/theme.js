@@ -12,6 +12,7 @@ const themeStyles = {
         const customStyle = mode === themeState.light ? {
             primary: {
                 main: "#2196f3",
+                text: 'black'
             },
             secondary: {
                 main: "#225792"
@@ -22,11 +23,11 @@ const themeStyles = {
         } : {
             primary: {
                 main: "#2196f3",
-                contrastText: '#ffffff'
+                text: '#ffffff'
             },
             secondary: {
                 main: "#225792",
-                contrastText: '#ffffff'
+                text: '#ffffff'
             },
             background: {
                 default: '#000000',
