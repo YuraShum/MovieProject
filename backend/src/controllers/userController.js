@@ -27,7 +27,7 @@ const userAuthService = {
             }
             // якщо користувача немає створюється новий
             const user = new userModel()
-            console.log(user)
+            // console.log(user)
 
             // приствоєнна значень новому користувачу
             user.userName = userName
@@ -67,7 +67,7 @@ const userAuthService = {
                 return responseHandlers
                     .badRequest(response, `The user with the specified name ${userName} does not exist`)
             }
-            console.log(user)
+            // console.log(user)
             if (!user.validPassword(password)) {
                 return responseHandlers.badRequest(response, "The user's password is incorrect")
             }
@@ -90,9 +90,11 @@ const userAuthService = {
 
     },
     getUserInformation: async (request, response) => {
+        console.log("user")
         try {
             // пошук користувача за переданим ідентифікатором в запиті
             const user = await userModel.findById(request.user.id)
+            // console.log(user)
 
             if (!user) {
                 return responseHandlers.notFound(response)

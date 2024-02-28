@@ -23,7 +23,7 @@ const tokenDecryption = (request) => {
 
 
 const userAuthChecks = async( request, response, next) => {
-
+    console.log("Get user")
     const tokenDecryptioned = tokenDecryption(request)
 
     if(!tokenDecryptioned){
@@ -31,6 +31,7 @@ const userAuthChecks = async( request, response, next) => {
     }
 
     const user = await userModel.findById(tokenDecryptioned.data)
+    // console.log(!!user)
     if(!user){
         return responseHandlers.unauthorize(response)
     }

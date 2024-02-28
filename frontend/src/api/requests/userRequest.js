@@ -9,11 +9,11 @@ const userApi = {
             const response = await publicUserInstance.post(
                 endpoints.user.userSignIn,
                 { userName, password })
-                console.log(response)
+                // console.log(response)
 
             return { response }
         } catch (err) {
-            console.log('err')
+            // console.log('err')
             return { err }
         }
     },
@@ -32,7 +32,9 @@ const userApi = {
     },
     getUserInformation: async () => {
         try {
+            console.log('getUserInformation  123')
             const response = await privateUserInstance.get(endpoints.user.getUserInformation)
+            console.log('Response ', response)
             return { response }
         } catch (err) {
             return { err }

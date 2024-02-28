@@ -8,14 +8,14 @@ const contentController = {
     // на основі типу та категорії, а також номеру сторінки
     getContentList: async (request, response) => {
         try {
-            console.log('RR', request.query, request.params)
+            // console.log('RR', request.query, request.params)
             // отримання сторінки із запиту
             const { page } = request.query
             // отримання значень із параметрів запиту 
             const { content , category } = request.params
             // отримання списку медіа проектів за допомоги описаної movieDBApi
             const result = await movieDBApi.list({ type: content, category, page })
-            console.log('Result', result)
+            // console.log('Result', result)
             if (result) {
                 return responseHandlers.ok(response, result)
             }

@@ -1,7 +1,6 @@
 import express from "express"
 import userPostRouteConfig from "./userPostConfig.js"
 import tokenMiddleware from '../../../middleware/token.js'
-import requestHandler from '../../../handlers/requestHandler.js'
 import userController from '../../../controllers/userController.js'
 import favoriteController from '../../../controllers/favoriteController.js'
 import userPutRouteConfig from "./userPutConfig.js"
