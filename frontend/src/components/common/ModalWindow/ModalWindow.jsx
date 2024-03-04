@@ -31,6 +31,7 @@ const ModalWindow = () => {
 
     return (
         <Modal
+        
             open={authUserModal !== undefined ? authUserModal : false}
             onClose={handleCloseModal}
         >
@@ -40,17 +41,18 @@ const ModalWindow = () => {
                     top: '50%',
                     left: '50%',
                     transform: 'translate(-50%, -50%)',
-                    width: '100%',
+                    width: '80%',
                     maxWidth: '600px',
-                    padding: '30px',
+                    padding: '2rem',
                     backgroundColor: 'background.paper',
                     boxShadow: 12,
                     borderRadius: '10px',
+                    
 
                 }}>
 
                 <Box
-                    sx={{ display: "flex", justifyContent: 'space-between', marginBottom: '2.5rem' }}>
+                    sx={{ display: "flex", justifyContent: 'space-between', marginBottom: '2.5rem', gap: '1rem'}}>
                     <Button
                         variant="contained"
                         onClick={() => setAction(MODAL_AUTH.signin)}>
@@ -62,7 +64,12 @@ const ModalWindow = () => {
                     <Box
                         sx={{
                             backgroundColor: 'primary.main',
-                            width: '60%',
+                            maxWidth: {
+                                xs: '30%',
+                                md: '60%'
+                                
+                            },
+                            width: '100%',
                             borderRadius: '20px',
                             display: 'flex',
                             alignItems: 'center',

@@ -30,7 +30,7 @@ const themeStyles = {
                 text: '#ffffff'
             },
             background: {
-                default: '#000000',
+                default: '#141414',
                 paper: '#131313'
             }
         }
