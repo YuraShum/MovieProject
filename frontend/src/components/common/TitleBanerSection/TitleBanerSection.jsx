@@ -133,7 +133,7 @@ const TitleBanerSection = ({ type, category }) => {
                                             lg: "70px"
                                         },
                                     }}>
-                                    {item.original_title}
+                                    {item.title ? item.title : item.original_title}
                                 </Typography >
                                 <Box sx={{
                                     display: 'flex',
@@ -163,7 +163,10 @@ const TitleBanerSection = ({ type, category }) => {
                                                     backgroundColor: `${theme.palette.mode === themeState.light ? 'primary.main' : 'secondary.main'}`,
                                                     padding: '3px 8px',
                                                     borderRadius: '8px',
-                                                    color: 'white'
+                                                    color: 'white',
+                                                    alignItems:'center',
+                                                    textAlign: 'center',
+                                                    height: 'max-content',
                                                 }}>
                                                 {genres.find((genre) => genre.id === id).name}
                                             </Typography>

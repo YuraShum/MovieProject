@@ -139,7 +139,6 @@ const Header = () => {
                                     }}
                                     component={Link}
                                     to={item.path}
-
                                     variant={appState.includes(item.state) ? 'contained' : 'text'}
                                 >
                                     {item.text}

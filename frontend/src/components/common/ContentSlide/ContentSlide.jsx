@@ -5,16 +5,18 @@ import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
 import ItemContentSlide from "../ItemContentSlide/ItemContentSlide"
 import CustomTitle from "../CustomTitle/CustomTitle"
+import genreApi from '../../../api/requests/genreRequest'
 
 const ContentSlide = ({ type, category, title }) => {
     const [content, setContent] = useState([])
+    const [genres, setGenres] = useState([])
 
     useEffect(() => {
         const getContentList = async () => {
             const { response, err } = await contentApi.getContentList({
                 type,
                 category,
-                page: 2
+                page: 3
             })
 
             if (response) {
@@ -24,7 +26,22 @@ const ContentSlide = ({ type, category, title }) => {
                 toast.error(err.message)
             }
         }
-        getContentList()
+        
+        const getGenreList = async () => {
+            const { response, err } = await genreApi.getGenrelist({
+                type
+            })
+
+            if (response) {
+                setGenres(response.genres)
+                console.log("Genres", response.genres)
+                getContentList()
+            }
+            if (err) {
+                toast.error(err.message)
+            }
+        }
+        getGenreList()
 
     }, [type, category])
 
@@ -37,7 +54,7 @@ const ContentSlide = ({ type, category, title }) => {
                     "& .swiper-slide": {
                         width: {
                             xs: '50%',
-                            sm: '33%',
+                            sm: `${100/3}%`,
                             md: '25%',
                             lg: '20%'
                         },
@@ -54,7 +71,7 @@ const ContentSlide = ({ type, category, title }) => {
                     {content.map((item, index) => {
                         return (
                             <SwiperSlide key={index}>
-                                <ItemContentSlide content={item} type={type} />
+                                <ItemContentSlide content={item} type={type} genres ={genres}/>
 
                             </SwiperSlide>
                         )

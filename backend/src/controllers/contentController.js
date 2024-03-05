@@ -37,6 +37,7 @@ const contentController = {
     getContentDetail: async (request, response) => {
         try {
             const { type, id } = request.params
+            console.log(`Type: ${type}, id: ${id}`)
             const content = await movieDBApi.detail({ type, id })
             
             // виконуємо наповнення даних content

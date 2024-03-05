@@ -18,6 +18,7 @@ const contentApi = {
     },
     getContentDetail: async ({ type, id }) => {
         try {
+            console.log(`type: ${type}, id: ${id}`)
             const response = await privateUserInstance.get(
                 endpoints.content.getContentDetail({ type, id })
             )
