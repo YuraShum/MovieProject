@@ -12,7 +12,7 @@ const contentController = {
             // отримання сторінки із запиту
             const { page } = request.query
             // отримання значень із параметрів запиту 
-            const { content , category } = request.params
+            const { content, category } = request.params
             // отримання списку медіа проектів за допомоги описаної movieDBApi
             const result = await movieDBApi.list({ type: content, category, page })
             // console.log('Result', result)
@@ -36,23 +36,25 @@ const contentController = {
     },
     getContentDetail: async (request, response) => {
         try {
-            const { type, id } = request.params
-            console.log(`Type: ${type}, id: ${id}`)
-            const content = await movieDBApi.detail({ type, id })
+            const { content, id } = request.params
+            // console.log('params', request.params)
+            const contents = await movieDBApi.detail({ type: content, id })
+            // console.log(contents)
             
             // виконуємо наповнення даних content
-            const informationAboutActor = await movieDBApi.informationAboutActors({ type, id })
-            content.credits = informationAboutActor
+            const informationAboutActor = await movieDBApi.informationAboutActors({ type: content, id })
+            contents.credits = informationAboutActor
+            // console.log(contents)
 
-            const videos = await movieDBApi.videos({ type, id })
-            content.videos = videos
+            const videos = await movieDBApi.videos({  type: content, id })
+            contents.videos = videos
 
-            const recommend = await movieDBApi.recommend({ type, id })
-            content.recommend = recommend
+            const recommend = await movieDBApi.recommend({  type: content, id })
+            contents.recommend = recommend
 
-            const images = await movieDBApi.images({ type, id })
-            content.images = images
-
+            const images = await movieDBApi.images({  type: content, id })
+            contents.images = images
+            
 
             const tokenDecryptioned = token.tokenDecryption(request)
             if (tokenDecryptioned) {
@@ -62,18 +64,18 @@ const contentController = {
                 if (user) {
                     // перевірка чи є в користувача олюблені  тайтли
                     const isFavorite = await favoriteModel.findOne({ user: user.id, id })
-                    media.isFavorite = isFavorite !== null
+                    contents.isFavorite = isFavorite !== null
                 }
             }
-            const comments = await commentsModel.find({ media })
+            const comments = await commentsModel.find({ id })
                 .populate('user')
                 .sort("-createdAt")
-            content.comments = comments
 
-            responseHandlers.ok(response, content)
+            contents.comments = comments
+            // console.log(contents)
+            responseHandlers.ok(response, contents)
 
         } catch {
-            console.log(e)
             responseHandlers.error(response)
         }
     },
