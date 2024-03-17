@@ -11,6 +11,10 @@ import { themeState } from '../../../styles/theme';
 import CircularRate from '../../../components/common/Form/CircularRate/CircularRate';
 import { FaHeart } from "react-icons/fa";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import VideosSection from '../../../components/common/VideosSection/VideosSection';
+import CustomTitle from '../../../components/common/CustomTitle/CustomTitle';
+import Gallery from '../Gallery/Gallery';
+import RecommendSection from '../../../components/common/RecommendSection/RecommendSection';
 
 const ContentDetail = () => {
     const { type, id } = useParams()
@@ -171,7 +175,11 @@ const ContentDetail = () => {
                                 width: 'max-content',
                                 backgroundColor: `${theme.palette.mode === themeState.light ? '' : '#225792'}`
                             }}
-                                component={Link}
+                                onClick={() => {
+                                    if (content.videos.results.length > 0) {
+                                        videoRef.current.scrollIntoView()
+                                    }
+                                }}
                             >
                                 Watch Now
                             </Button>
@@ -255,6 +263,49 @@ const ContentDetail = () => {
                 </Box>
 
             </Box >
+            {/** videos section */}
+            {content.videos.results.length > 0 &&
+                <Box sx={{
+                    marginTop: '2rem',
+                    color: 'primary.text'
+                }}>
+                    <CustomTitle title='Videos' />
+                    <div ref={videoRef}
+                        style={{
+                            paddingTop: '2rem'
+                        }}>
+
+                        <VideosSection videos={content.videos.results.splice(0, 8)} />
+                    </div>
+                </Box>
+            }
+            {/** videos section */}
+            {content.images.backdrops.length > 0 &&
+
+                <Box
+                    sx={{
+                        marginTop: '2rem',
+                        color: 'primary.text'
+                    }}>
+                    <CustomTitle title='Gallery'/>
+                    <Gallery images={content.images.backdrops.splice(0, 15)} />
+
+                </Box>
+            }
+
+            {/** content recommendation section */}
+            {content.recommend.results.length > 0 &&(
+                <Box
+                sx={{
+                    color: 'primary.text'
+                }}>
+                    <CustomTitle title={`Recommended ${type}`}/>
+                    {content.recommend.results.splice(0, 10).map((elem, index) => (
+                        <RecommendSection content={elem} type={type} genres={genres}/>
+                    ))}
+                </Box>
+            )}
+            {/** content recommendation section */}
         </>
             :
             null

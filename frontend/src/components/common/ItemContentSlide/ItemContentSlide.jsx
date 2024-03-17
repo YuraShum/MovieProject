@@ -39,7 +39,8 @@ const ItemContentSlide = ({ content, type, genres }) => {
             ,
             posterPath: `${BUILD_POSTER_IMAGE_URL}${content.poster_path || content.backdrop_path || content.mediaPoster}`,
             date: `${type === TYPE.movie ? content.release_date?.split('-')[0] : content.first_air_date?.split('-')[0]}`,
-            rate: content.vote_avarege || content.mediaRate
+            rate: content.vote_average
+            || content.mediaRate
         })
     }, [content, type])
     return (
