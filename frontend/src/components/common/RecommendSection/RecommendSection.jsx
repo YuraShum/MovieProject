@@ -53,7 +53,7 @@ const RecommendSection = ({ content, type }) => {
     }, [content, type])
 
     useEffect(() => {
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0)
         setIsOpenRecommend(false)
     }, [content])
 
@@ -65,6 +65,7 @@ const RecommendSection = ({ content, type }) => {
             marginBottom: { xs: '1rem', md: '2rem' },
         }}>
             <Box sx={{
+                margin: '0 2rem',
                 position: 'relative',
                 borderRadius: '1rem',
                 overflow: 'hidden',
@@ -78,7 +79,7 @@ const RecommendSection = ({ content, type }) => {
                     bottom: 0,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    filter: 'blur(10px)',
+                    filter: isOpenRecommend ? '' : 'blur(10px)',
                     backgroundImage: `url(${BUILD_FULL_IMAGE_URL}${content.backdrop_path || content.mediaPoster})`,
                 },
             }}>
@@ -157,7 +158,7 @@ const RecommendSection = ({ content, type }) => {
                                         width: 'max-content',
                                         backgroundColor: theme.palette.mode === themeState.light ? '' : '#225792'
                                     }}
-                                    component= {Link}
+                                    component={Link}
                                     to={`/${type}/${itemContent.id}`}>
                                     Watch Now</Button>
                             </Box>

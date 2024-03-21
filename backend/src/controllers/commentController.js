@@ -4,8 +4,10 @@ import commentsModel from "../models/commentModel.js"
 
 const commentController = {
     createComment: async (request, response) => {
+        console.log('Create')
         try {
             // отримання ідентифікатору фільму з параметрів запиту 
+            
             const { id } = request.params
 
             // створюється новий об'єкт за допомогою моделі commentModel,

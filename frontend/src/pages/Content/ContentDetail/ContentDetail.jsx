@@ -15,6 +15,7 @@ import VideosSection from '../../../components/common/VideosSection/VideosSectio
 import CustomTitle from '../../../components/common/CustomTitle/CustomTitle';
 import Gallery from '../Gallery/Gallery';
 import RecommendSection from '../../../components/common/RecommendSection/RecommendSection';
+import { ContentComment } from '../../../components/common/Comment/ContentComment/ContentComment';
 
 const ContentDetail = () => {
     const { type, id } = useParams()
@@ -280,6 +281,7 @@ const ContentDetail = () => {
                 </Box>
             }
             {/** videos section */}
+            {/** gallery section */}
             {content.images.backdrops.length > 0 &&
 
                 <Box
@@ -287,21 +289,34 @@ const ContentDetail = () => {
                         marginTop: '2rem',
                         color: 'primary.text'
                     }}>
-                    <CustomTitle title='Gallery'/>
+                    <CustomTitle title='Gallery' />
                     <Gallery images={content.images.backdrops.splice(0, 15)} />
 
                 </Box>
             }
-
-            {/** content recommendation section */}
-            {content.recommend.results.length > 0 &&(
-                <Box
+            {/** gallery section */}
+            {/** comments section */}
+            <Box
                 sx={{
+                    marginTop: '2rem',
                     color: 'primary.text'
                 }}>
-                    <CustomTitle title={`Recommended ${type}`}/>
+                <CustomTitle title='Comments' />
+                <ContentComment comments={content.comments} content={content} type={type} />
+
+
+            </Box>
+            {/** comments section */}
+
+            {/** content recommendation section */}
+            {content.recommend.results.length > 0 && (
+                <Box
+                    sx={{
+                        color: 'primary.text'
+                    }}>
+                    <CustomTitle title={`Recommended ${type}`} />
                     {content.recommend.results.splice(0, 10).map((elem, index) => (
-                        <RecommendSection content={elem} type={type} genres={genres}/>
+                        <RecommendSection content={elem} type={type} genres={genres} />
                     ))}
                 </Box>
             )}

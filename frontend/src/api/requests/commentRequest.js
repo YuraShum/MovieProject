@@ -14,6 +14,7 @@ const commentApi = {
     },
     addComment: async ({ id, type, title, poster, content }) => {
         try {
+            console.log({ id, type, title, poster, content })
             const response = await privateUserInstance.post(
                 endpoints.comment.addComment,
                 { id, type, title, poster, content }
