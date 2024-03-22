@@ -20,7 +20,7 @@ const ItemContentSlide = ({ content, type, genres }) => {
     })
 
     useEffect(() => {
-        console.log('content: ', content)
+        // console.log('content: ', content)
         // console.log('Content Item:', `${BUILD_POSTER_IMAGE_URL}${content.poster_path || content.backdrop_path || content.mediaPoster}`)
         setItemContent({
             title:
@@ -54,6 +54,7 @@ const ItemContentSlide = ({ content, type, genres }) => {
                     position: 'relative',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
+                    overflow: 'hidden'
 
 
 
