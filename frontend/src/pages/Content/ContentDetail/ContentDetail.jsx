@@ -218,7 +218,7 @@ const ContentDetail = () => {
                                                         textDecoration: 'none',
 
                                                     }}
-                                                    to={`/person/${item.id}}`}>
+                                                    to={`/person/${item.id}`}>
                                                     <Box sx={{
                                                         color: 'primary.text',
                                                         paddingTop: '150px',

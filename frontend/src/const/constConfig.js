@@ -24,13 +24,21 @@ const FILTER_BUTTON =   [
     'Top movies',
     'Top TV',
 ]
+
+const MEDIA_TYPES = [
+    'movie',
+    'tv',
+    'people'
+    
+]
 export {
     BASE_URL,
     BUILD_FULL_IMAGE_URL,
-    BUILD_POSTER_IMAGE_URL ,
+    BUILD_POSTER_IMAGE_URL,
     BUILD_YOUTUBE_VIDEO_URL,
     CATEGORY,
     TYPE,
     MODAL_AUTH,
-    FILTER_BUTTON
+    FILTER_BUTTON,
+    MEDIA_TYPES
 }

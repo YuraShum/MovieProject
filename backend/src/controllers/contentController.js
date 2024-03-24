@@ -81,14 +81,16 @@ const contentController = {
     },
     search: async (request, response) => {
         try {
-            const { type } = request.params
+            console.log("Params", request.params)
+            console.log('Query', request.query)
+            const { content } = request.params
             const { query, page } = request.query
 
             // Список знайдених медіа проектів
-            const result = await tmdbApi.mediaSearch({
+            const result = await movieDBApi.search({
                 query,
                 page,
-                type: type === "people" ? "person" : type
+                type: content === "people" ? "person" : content
             })
 
             responseHandlers.ok(response, result)

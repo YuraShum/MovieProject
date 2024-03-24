@@ -28,6 +28,7 @@ const contentApi = {
         }
     },
     search: async ({ type, query, page }) => {
+        console.log({ type, query, page })
         try {
             const response = await publicUserInstance.get(
                 endpoints.content.search({ type, query, page })
